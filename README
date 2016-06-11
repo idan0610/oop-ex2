@@ -1,0 +1,48 @@
+idan0610
+
+
+
+
+=============================
+=      File description     =
+=============================
+SpaceShip.java - implements the general SpaceShip class
+SpaceShipFactory.java - initiates new SpaceShip objects with the right types according the command arguments.
+Human.java - implements the Human SpaceShip
+Runner.java - implements the Runner SpaceShip
+Basher.java - implements the Basher SpaceShip
+Aggressive.java - implements the Aggressive SpaceShip
+Drunkard.java - implements the Drunkard SpaceShip
+Special.java - implements the Special SpaceShip
+
+
+=============================
+=          Design           =
+=============================
+I made the SpaceShip class abstract because a general SpaceShip does not exist in the game. All the types of
+SpaceShip has a unique behavior. The only abstract method of SpaceShip is DoActions() which defines the
+behavior of the SpaceShip. It's very easy to add new SpaceShip type. All that needs to be done adding a new
+class to the directory where all the types are located that inherits SpaceShip class and implements the 
+DoActions() and maybe more helper methods or even override the existing methods of SpaceShip if necessary
+(like Human override the getImage() method to represent the Human SpaceShip with its unique images).
+
+
+=============================
+=  Implementation details   =
+=============================
+Except the minimal API required by the instructions, I added 3 new simple methods: getShieldStatus() to find
+out if the shield of the SpaceShip is on or off, ShieldOff() to turn off the shield, and addEnergy() to add
+energy to the SpaceShip.
+
+
+=============================
+=    Answers to questions   =
+=============================
+The Drunkard SpaceShip decide in random to which direction to turn, and makes the turn for 50 rounds, and
+then decide a new random turn. It will always accelerate. It also fire in random all the time, without
+marking a specific SpaceShip to target.
+
+The Special SpaceShip pursues other ships and when its distance from another ship is 0.4 units, it will
+start to fire. If the distance from the other ship is 0.2, the Special spaceship stop to fire.
+It will try to teleport if the distance from another ship is 0.2. It will also attempt to turn on its shield 
+if its distance from another ship is 0.1 units (in case the teleport was not success).
